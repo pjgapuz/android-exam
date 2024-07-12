@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.android.volley.Request;
@@ -49,6 +50,8 @@ public class PersonalInfoActivity extends AppCompatActivity implements SwipeRefr
 
     ProgressBar progressBar;
 
+    Button backPage;
+
     int page = 2;
 
     AgeCalculator ageCalculator;
@@ -62,6 +65,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements SwipeRefr
         personalInfos = new ArrayList<>();
         swipeRefreshLayout = findViewById(R.id.swipeToRefresh);
         progressBar = findViewById(R.id.progressBar);
+        backPage = findViewById(R.id.returnBack);
 
 
         extractData();
@@ -78,6 +82,13 @@ public class PersonalInfoActivity extends AppCompatActivity implements SwipeRefr
                     addMoreData();
                     progressBar.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        backPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
